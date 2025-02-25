@@ -26,7 +26,7 @@ if($_POST){//se o usuario clicou no botam atualizar
      destaque = '$destaque',
      descricao = '$descricao',
      resumo = '$resumo',
-     valor = '$valor',
+     valor = $valor,
      imagem = '$nome_img'
      where id = $id = $id
     ";
