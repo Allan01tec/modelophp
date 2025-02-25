@@ -32,7 +32,7 @@ if($_POST){//se o usuario clicou no botam atualizar
     ";
     $result = $conn->query($update);
     if($result){
-        header('location:produtos_lista.php')
+        header('location:produtos_lista.php');
     }
 }
 
