@@ -1,5 +1,26 @@
 <?php
 
+include '../conn/connect.php'; // Arquivo que contém a conexão
+ 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $login = $_POST['login'];
+    $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+    $nivel = $_POST['nivel'];
+    // Query SQL para inserir usuário
+    $sql = "INSERT INTO usuarios (login, senha, nivel) VALUES (login, senha, nivel)";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sss", $login, $senha, $nivel);
+ 
+    if ($stmt->execute()) {
+        echo "Usuário cadastrado com sucesso!";
+    } else {
+        echo "Erro ao cadastrar usuário: " . $conn->error;
+    }
+ 
+    $stmt->close();
+    $conn->close();
+}
 ?>
 <!-- html:5 -->
 <!DOCTYPE html>
